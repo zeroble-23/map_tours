@@ -1,0 +1,31 @@
+{
+  "places":[
+    {
+      "id" : "1",
+      "name" : "Washington DC",
+      "lat" : "38.9072",
+      "lon" : "-77.0369",
+      "zoom": "5",
+      "description" : "Capital of USA",
+      "visit_date" : "2010/08/20"
+    },
+    {
+      "id" : "2",
+      "name" : "Tokyo",
+      "lat" : "35.6762",
+      "lon" : "139.6503",
+      "zoom": "9",
+      "description" : "Capital of Japan",
+      "visit_date" : "2010/08/20"
+    },
+    {
+      "id" : "3",
+      "name" : "Mexico City",
+      "lat" : "19.4326",
+      "lon" : "-99.1332",
+      "zoom": "7",
+      "description" : "Capital of Mexico",
+      "visit_date" : "2010/08/20"
+    }
+  ]
+}

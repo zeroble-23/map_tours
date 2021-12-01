@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import React, {useRef, useEffect, useState} from 'react';
 import './App.css';
+import Locations from './locations.json'
+import Navigator from './Navigator';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
  
 mapboxgl.accessToken = 'pk.eyJ1IjoiamxyZXllcyIsImEiOiJja3dtNW42eTEyOHlyMm5xYmIzdXZzaHVnIn0.tuZrvm2VXlm4yojcMTJAHw';
@@ -8,12 +10,13 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamxyZXllcyIsImEiOiJja3dtNW42eTEyOHlyMm5xYmIzd
 function App() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLon] = useState(Locations.places[0].lon);
+  const [lat, setLat] = useState(Locations.places[0].lat);
+  const [zoom, setZoom] = useState(Locations.places[0].zoom);
+  const [selectedLocation, setSelectedLocation] = useState(Locations.places[0]);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    if (map.current) return; 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -21,21 +24,29 @@ function App() {
       zoom: zoom
     });
   });
-     
-  // useEffect(() => {
-  //   if (!map.current) return; // wait for map to initialize
-  //   map.current.on('move', () => {
-  //     setLng(map.current.getCenter().lng.toFixed(4));
-  //     setLat(map.current.getCenter().lat.toFixed(4));
-  //     setZoom(map.current.getZoom().toFixed(2));
-  //   });
-  // });
+
+  const locationHandler = (_location) => {
+    setSelectedLocation(_location);
+    moveMap(_location);
+  }
+
+  const moveMap = (_location) => {
+    map.current.flyTo({
+      center: [_location.lon, _location.lat]
+    });
+  }
 
   return (
     <div className="App">
       <div ref={mapContainer} className="map-container" />
+      <Navigator
+        locationData={Locations}
+        selectedLocation={selectedLocation}
+        locationHandler={locationHandler}
+       />
     </div>
   );
+  
 }
 
 export default App;

@@ -43,3 +43,42 @@
   bottom: 0;
   width: 100%;
 }
+
+.navigator {
+  margin: auto;
+  margin-top: 10px;
+  width: 400px;
+  height: 100px;
+  position: relative;
+  background-color: #282c34;
+  color: thistle;
+}
+
+.nav-button {
+  float: left;
+  width: 10%;
+  height: 100%;
+  cursor: pointer;
+  /* padding-top: 40px; */
+}
+
+.nav-button:hover {
+  background-color: darkcyan;
+}
+
+.nav-button-icon {
+  padding-top: 40px;
+}
+
+.nav-location-area {
+  float: left;
+  width: 80%;
+}
+
+.nav-button-left {
+  /* float: left; */
+}
+
+.nav-button-left {
+  /* float: left; */
+}
