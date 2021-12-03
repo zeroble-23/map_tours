@@ -16,7 +16,7 @@ function Navigator(_props) {
   }
 
   const _getSelectedLocationIndex = () => {
-    return _props.locationData.places.findIndex((item) => {return item.id === _props.selectedLocation.id});
+    return _props.selectedLocation ? _props.locationData.places.findIndex((item) => {return item.id === _props.selectedLocation.id}) : 0;
   }
 
   return (
@@ -26,8 +26,8 @@ function Navigator(_props) {
       </div>
       <div className="nav-location-area">
         <div>Locations</div>
-        <div>{_props.selectedLocation.name}</div>
-        <div>{_props.selectedLocation.description}</div>
+        <div>{_props.selectedLocation?.name}</div>
+        <div>{_props.selectedLocation?.description}</div>
       </div>
       <div className="nav-button nav-button-right" onClick={nextLocation}>
         <div className="nav-button-icon">＞</div>
