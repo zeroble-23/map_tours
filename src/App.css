@@ -48,10 +48,10 @@
   margin: auto;
   margin-top: 10px;
   width: 400px;
-  height: 100px;
+  height: 80px;
   position: relative;
   background-color: #282c34;
-  color: thistle;
+  color: #dbdbdb;
 }
 
 .nav-button {
@@ -59,7 +59,6 @@
   width: 10%;
   height: 100%;
   cursor: pointer;
-  /* padding-top: 40px; */
 }
 
 .nav-button:hover {
@@ -67,7 +66,7 @@
 }
 
 .nav-button-icon {
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .nav-location-area {
@@ -75,12 +74,14 @@
   width: 80%;
 }
 
-.nav-button-left {
-  /* float: left; */
+.location-name {
+  padding-top: 15px;
+  font-size: large;
+  font-weight: 800;
 }
 
-.nav-button-left {
-  /* float: left; */
+.location-description {
+  padding-top: 5px;
 }
 
 .location-image { 
@@ -93,10 +94,48 @@
   padding-top: 5px;
 }
 
+.location-list-button {
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  width: 400px;
+  height: 20px;
+  background-color: #282c34;
+  color: #dbdbdb;
+  border-top: solid 1px #5a5a5a;
+}
+
+.location-list-button:hover {
+  background-color: gray;
+}
+
+.location-list {
+  margin: auto;
+  margin-top: 10px;
+  width: 400px;
+  max-height: 200px;
+  position: relative;
+  overflow: auto;
+}
+
+.location-list-item { 
+  max-height: 50px;
+  background-color: mediumblue;
+  background-color: #282c34;
+  color: #dbdbdb;
+  text-align: left;
+  padding: 10px 0 10px 10px;
+  border-bottom: solid 1px;
+  border-color: #5a5a5a;
+  cursor: pointer;
+}
+
+.location-list-item:hover {
+  background-color: darkcyan;
+}
+
 .mapboxgl-popup-content {
   border-radius: 10px;
-  border-color: #d7dce7;
-  border-style: solid;
 }
 
 .mapboxgl-popup-close-button {
@@ -108,4 +147,8 @@
   border-color: #d7dce7;
   border-radius: 50%;
   font-size: 14pt;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background-color: thistle;
 }

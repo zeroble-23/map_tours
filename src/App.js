@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import React, {useRef, useEffect, useState} from 'react';
-import './App.css';
 import ReactDOM from 'react-dom';
-import Locations from './locations.json'
-import Navigator from './Navigator';
-import LocationPopup from './LocationMarker';
-
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import Navigator from './Navigator';
 import LocationMarker from './LocationMarker';
- 
+import LocationList from './LocationList';
+
+import Locations from './locations.json'
+import './App.css';
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamxyZXllcyIsImEiOiJja3dtNW42eTEyOHlyMm5xYmIzdXZzaHVnIn0.tuZrvm2VXlm4yojcMTJAHw';
 
 function App() {
@@ -19,6 +18,13 @@ function App() {
   const [lat, setLat] = useState(0);
   const [zoom, setZoom] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState(null);
+  const [locationListVisible, setLocationListVisible] = useState(false);
+
+  const sortedLocations = Locations.places.sort((placeA, placeB) => {
+    let dateA = new Date(placeA.visit_date),
+        dateB = new Date(placeB.visit_date);
+    return dateA > dateB ? 1 : -1;
+  });
 
   useEffect(() => {
     if (map.current) return; 
@@ -49,14 +55,27 @@ function App() {
           .addTo(map.current);
   }
 
+  const toggleLocationList = () => {
+    setLocationListVisible(!locationListVisible);
+  }
+
+  const locationList = (
+      <LocationList
+        locationData={sortedLocations}
+        locationHandler={locationHandler}
+      />
+  );
+
   return (
     <div className="App">
       <div ref={mapContainer} className="map-container" />
       <Navigator
-        locationData={Locations}
+        locationData={sortedLocations}
         selectedLocation={selectedLocation}
         locationHandler={locationHandler}
-       />
+        locationListToggler={toggleLocationList}
+      />
+      {locationListVisible ? locationList : null}
     </div>
   );
   
