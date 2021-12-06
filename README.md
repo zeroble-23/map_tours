@@ -5,7 +5,7 @@
 `npm install`
 and 
 `npm start`
-3. Open localhost in browser.
+3. Open `http://localhost:3000/` in browser.
 
 # About the App
 
