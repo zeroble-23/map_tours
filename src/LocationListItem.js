@@ -1,5 +1,3 @@
-import React, {useRef, useEffect, useState} from 'react';
-
 function LocationListItem(_props) {
 
   const locationHandleClick = () => {

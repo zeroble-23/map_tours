@@ -1,6 +1,3 @@
-import React, {useRef, useEffect, useState, useContext} from 'react';
-import { Marker } from 'react-map-gl';
-
 function LocationMarker(_props) {
   const {
     location

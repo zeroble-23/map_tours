@@ -1,5 +1,3 @@
-import React, {useRef, useEffect, useState} from 'react';
-
 function Navigator(_props) {
   const nextLocation = () => {
     let currentIndex = _getSelectedLocationIndex();
@@ -16,7 +14,6 @@ function Navigator(_props) {
   const _getSelectedLocationIndex = () => {
     return _props.selectedLocation ? _props.locationData.findIndex((item) => {return item.id === _props.selectedLocation.id}) : 0;
   }
-
 
   return (
     <div>

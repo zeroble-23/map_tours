@@ -14,9 +14,6 @@ function App() {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const markerRef = useRef(new mapboxgl.Popup({color: "#FFFFFF"}));
-  const [lng, setLon] = useState(0);
-  const [lat, setLat] = useState(0);
-  const [zoom, setZoom] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [locationListVisible, setLocationListVisible] = useState(false);
 
@@ -31,8 +28,8 @@ function App() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [lng, lat],
-      zoom: zoom
+      center: [0, 0],
+      zoom: 1,
     });
   });
 
@@ -78,7 +75,6 @@ function App() {
       {locationListVisible ? locationList : null}
     </div>
   );
-  
 }
 
 export default App;
